@@ -1,3 +1,31 @@
+// Criação do Botao para chat
+// Cria o elemento span
+var span = document.createElement("span");
+span.className = "texto-botao";
+span.textContent = "Fale Conosco";
+
+// Cria o elemento a
+var a = document.createElement("a");
+a.className = "botao-flutuante";
+a.href = "#";
+
+// Cria o elemento i
+var i = document.createElement("i");
+i.className = "fa-regular fa-comments";
+
+// Adiciona o elemento i como filho do elemento a
+a.appendChild(i);
+
+// Adiciona o elemento span como filho do elemento a
+a.insertBefore(span, a.firstChild);
+
+// Adiciona o elemento a ao documento
+document.body.appendChild(a);
+
+
+
+
+
 // Criação do elemento link <link> para o arquivo CSS
 var cssLink = document.createElement("link");
 cssLink.rel = "stylesheet";
@@ -33,7 +61,7 @@ var linkChat = document.createElement("a");
 linkChat.href = "#";
 linkChat.id = "card1";
 linkChat.classList.add("link-chat");
-linkChat.setAttribute("onclick", "toggleChat()");
+linkChat.setAttribute("onclick", "ocultarBloco()");
 
 // Criação do elemento div com a classe "loader"
 var loader = document.createElement("div");
@@ -136,6 +164,30 @@ var estadoChat = 0;
 var nome, telefone, assunto;
 var conversa = [];
 var listaMensagens = document.getElementById("messages");
+
+//Criar a função de oculta e aparecer botao e janela
+// Função para ocultar o bloco de código ao ser clicado
+function ocultarBloco() {
+  const botaoChat = document.querySelector(".mychat-card")
+  if (a.style.display === "block") {
+  botaoChat.style.display = "block";
+  a.style.display = "none";
+//  if (isChatVisible) {
+    // chatCard.style.transform = "translateY(0%)";
+    // chatContent.style.display = "none";
+//   } else {
+    chatCard.style.transform = "translateY(0)";
+    chatContent.style.display = "block";
+//   }
+//   isChatVisible = !isChatVisible;
+}else {
+  botaoChat.style.display = "none";
+  a.style.display = "block";
+}
+}
+// Adiciona o evento de clique ao elemento a
+a.addEventListener("click", ocultarBloco);
+
 
 function toggleChat() {
   if (isChatVisible) {
