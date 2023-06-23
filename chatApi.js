@@ -95,13 +95,13 @@ messageList.id = "messages";
 // Criação do primeiro item da lista <li> com a classe "list-align-left" e o texto correspondente
 var listItem1 = document.createElement("li");
 listItem1.classList.add("list-align-left");
-listItem1.textContent = "Olá, eu vou te ajudar a acelerar o seu atendimento!";
+listItem1.textContent = "Olá seja bem vindo a A2m B.I";
 messageList.appendChild(listItem1);
 
 // Criação do segundo item da lista <li> com a classe "list-align-left" e o texto correspondente
 var listItem2 = document.createElement("li");
 listItem2.classList.add("list-align-left");
-listItem2.textContent = "Me informe por favor o seu nome";
+listItem2.textContent = "Para continuar nosso atendimento, informe seu nome por favor:";
 messageList.appendChild(listItem2);
 
 // Adiciona a lista <ul> ao div "chat-window"
@@ -161,7 +161,7 @@ var chatCard = document.getElementById("chatCard");
 var chatContent = document.querySelector(".chat-content");
 var isChatVisible = false;
 var estadoChat = 0;
-var nome, telefone, assunto;
+var nome, telefone, empresa;
 var conversa = [];
 var listaMensagens = document.getElementById("messages");
 
@@ -214,7 +214,8 @@ if (conversa.length >= 3) {
   listaMensagens.innerHTML += `<li class="list-align-right">${conversa[0]}</li>`;
   listaMensagens.innerHTML += `<li class="list-align-left">Perfeito <b>${conversa[0]}</b>, agora me informe seu telefone?</li>`;
   listaMensagens.innerHTML += `<li class="list-align-right">${conversa[1]}</li>`;
-  listaMensagens.innerHTML += `<li class="list-align-left">Ok, o seu telefone é <b>${conversa[1]}</b>. Agora, qual é o assunto?</li>`;
+  listaMensagens.innerHTML += `<li class="list-align-left">Ok, o seu telefone é <b>${conversa[1]}</b>. Certo nome qual é nome da sua "Empresa"?
+  </li>`;
   listaMensagens.innerHTML += `<li class="list-align-right">${conversa[2]}</li>`;
   listaMensagens.innerHTML += `<li class="list-align-left">Entendi, você quer falar sobre <b>${conversa[2]}</b>. Agora vou enviar as suas informações para o nosso sistema.</li>`;
   listaMensagens.innerHTML += `<li class="list-align-left"><b>Para reiniciar sua conversa informe novamente seu nome<b></li>`;
@@ -264,7 +265,7 @@ document
         if (validatel) {
           inputMensagem.value = "";
           listaMensagens.innerHTML += `<li class="list-align-right">${telefone}</li>`;
-          listaMensagens.innerHTML += `<li class="list-align-left">Ok, o seu telefone é <b>${telefone}</b>. Agora, qual é o assunto?</li>`;
+          listaMensagens.innerHTML += `<li class="list-align-left">Ok, o seu telefone é <b>${telefone}</b>. Agora, qual é o nome da sua Empresa?</li>`;
           estadoChat++;
           scrollChatWindow();
           break;
@@ -276,16 +277,16 @@ document
           break;
         }
       case 2:
-        assunto = inputMensagem.value;
+        empresa = inputMensagem.value;
         inputMensagem.value = "";
-        listaMensagens.innerHTML += `<li class="list-align-right">${assunto}</li>`;
-        listaMensagens.innerHTML += `<li class="list-align-left">Entendi, você quer falar sobre <b>${assunto}</b>. Agora vou enviar as suas informações para o nosso sistema.</li>`;
+        listaMensagens.innerHTML += `<li class="list-align-right">${empresa}</li>`;
+        listaMensagens.innerHTML += `<li class="list-align-left">Entendi, você quer falar sobre <b>${empresa}</b>. Agora, vou enviar as suas informações para o nosso time e entraremos em contato pelo WhatsApp dentro de 15s.</li>`;
         scrollChatWindow();
 
         // Adicionar as mensagens à conversa
         conversa.push(nome);
         conversa.push(telefone);
-        conversa.push(assunto);
+        conversa.push(empresa);
 
         // Salvar a conversa no armazenamento local
         salvarConversa();
@@ -295,7 +296,7 @@ document
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ nome, telefone, assunto }),
+          body: JSON.stringify({ nome, telefone, empresa }),
         })
           .then((response) => response.json())
           .then((data) => {

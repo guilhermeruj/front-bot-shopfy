@@ -16,7 +16,7 @@ function toggleChat() {
 // Controle do Chat
 
 var estadoChat = 0;
-var nome, telefone, assunto;
+var nome, telefone, empresa;
 
 document
   .getElementById("chatForm")
@@ -45,15 +45,15 @@ document
         telefone = inputMensagem.value;
         inputMensagem.value = "";
         listaMensagens.innerHTML += `<li class="list-align-right">${telefone}</li>`;
-        listaMensagens.innerHTML += `<li class="list-align-left">Ok, o seu telefone é ${telefone}. Agora, qual é o assunto?</li>`;
+        listaMensagens.innerHTML += `<li class="list-align-left">Ok, o seu telefone é ${telefone}. Agora, qual é o nome da sua Empresa?</li>`;
         estadoChat++;
         scrollChatWindow();
         break;
       case 2:
-        assunto = inputMensagem.value;
+        empresa = inputMensagem.value;
         inputMensagem.value = "";
-        listaMensagens.innerHTML += `<li class="list-align-right">${assunto}</li>`;
-        listaMensagens.innerHTML += `<li class="list-align-left">Entendi, você quer falar sobre ${assunto}. Agora vou enviar as suas informações para o nosso sistema.</li>`;
+        listaMensagens.innerHTML += `<li class="list-align-right">${empresa}</li>`;
+        listaMensagens.innerHTML += `<li class="list-align-left">Entendi, você quer falar sobre ${empresa}. Agora vou enviar as suas informações para o nosso time e entraremos em contato dentro de 15s.</li>`;
         scrollChatWindow();
 
         fetch("http://localhost:3030/api/chats", {
@@ -61,7 +61,7 @@ document
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ nome, telefone, assunto }),
+          body: JSON.stringify({ nome, telefone, empresa }),
         })
           .then((response) => response.json())
           .then((data) => {

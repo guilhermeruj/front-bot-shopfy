@@ -5,25 +5,24 @@
   font-size: 17px;
   position: fixed;
   bottom: 3.2em; /* Defina a posição vertical desejada */
-  left: 3em; /* Defina a posição horizontal desejada */
+  right: 3em; /* Defina a posição horizontal desejada */
   width: 110px; /* Defina o tamanho desejado */
-  height: 5vh;
   animation: saida 2s linear,pulsar 5s ease-in-out infinite;
   color: white;
   background: rgb(30,152,137);
   background: linear-gradient(337deg, rgba(30,152,137,0.7455357142857143) 1%, rgba(133,209,200,1) 48%, rgba(133,172,209,1) 86%);
-  border-radius: 8px  8px 8px 0px ;  
+  border-radius: 8px  8px 0px 8px ;  
 }
 
 .botao-flutuante {
   position: fixed;
   bottom: 1em; /* Defina a posição vertical desejada */
-  left: .5em; /* Defina a posição horizontal desejada */
+  right: .5em; /* Defina a posição horizontal desejada */
   width: 50px; /* Defina o tamanho desejado */
   height:50px; /* Defina o tamanho desejado */
   background: rgb(30,152,137);
   background: linear-gradient(337deg, rgba(30,152,137,0.7455357142857143) 1%, rgba(133,209,200,1) 48%, rgba(133,172,209,1) 86%);  
-  border-radius: 50% 0 50% 50%; /* Torna o botão redondo */
+  border-radius: 0% 50% 50% 50%; /* Torna o botão redondo */
   text-align: center;
   line-height: 50px; /* Centraliza o ícone verticalmente */
   color:white; /* Defina a cor do ícone */
@@ -63,7 +62,7 @@
 .mychat-card {
   font-family: "Helvetica", sans-serif;
   position: fixed;
-  left: 2em;
+  right: 1em;
   bottom: 0;
   width: 350px;
   background-color: #fff;
